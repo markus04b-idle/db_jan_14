@@ -3,13 +3,12 @@ import sqlite3
 conn = sqlite3.connect('point.db')
 cursor = conn.cursor()
 query = """
-INSERT INTO points (x, y) 
-VALUES 
-(2,5),
-(9,1),
-(16,7)
+    SELECT * 
+    FROM points;
 """
 
 cursor.execute(query)
-conn.commit()
-conn.close() #close the connection
+results = cursor.fetchall()
+conn.close()
+
+print(results)
